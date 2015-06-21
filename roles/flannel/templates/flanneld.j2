@@ -8,5 +8,9 @@ FLANNEL_ETCD="http://{{ groups['etcd'][0] }}:4001"
 FLANNEL_ETCD_KEY="/coreos.com/network"
 
 # Any additional options that you want to pass
-#FLANNEL_OPTIONS=""
-
+# For vagrant clusters or other non-conventional networking setups, you may want to set this.
+{% if flannel_iface %}
+FLANNEL_OPTIONS="--iface={{ flannel_iface }}"
+{% else %}
+FLANNEL_OPTIONS=""
+{% endif %}

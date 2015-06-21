@@ -16,6 +16,14 @@ kube_overlay_ip: 4.0.0.0
 # Prefix length of kube_overlay_ip range.
 kube_overlay_prefix: 16
 
+# flannel_iface: Important for folks who want to serve overlay on non-default
+# interfaces. 
+# HINT 1: If your nodes are spinning up containers w/ the same IP subnet,
+# then you messed it up, and probably need to set this manually.
+# HINT 2: Vagrant or other VM environments may use a BRIDGE as the first interface,
+# hence the origin of this parameter was to make vagrant provisioning work on multinode
+# setups where default interface is actually a bridge, rather than the private ip.
+# flannel_iface: eth1
 
 # Internal DNS configuration.
 # Kubernetes can create and mainatain its own DNS server to resolve service names
